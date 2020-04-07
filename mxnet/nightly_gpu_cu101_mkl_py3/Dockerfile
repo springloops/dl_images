@@ -2,7 +2,8 @@ FROM mxnet/python:nightly_gpu_cu101_mkl_py3
 
 RUN ln -s /usr/bin/python3 /usr/bin/python && \
     mkdir -p /mxnet/d2l-en && chmod -R a+rwx /mxnet/ && \
-    apt-get install unzip
+    mkdir /.local && chmod a+rwx /.local && \
+    apt-get install -y --no-install-recommends unzip fonts-nanum
 
 WORKDIR /mxnet/d2l-en
 

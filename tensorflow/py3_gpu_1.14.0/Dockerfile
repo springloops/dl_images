@@ -4,7 +4,7 @@ RUN pip install jupyterlab matplotlib numpy scipy pandas sympy nose colored scik
 
 RUN mkdir -p /tf/tensorflow-tutorials && chmod -R a+rwx /tf/ && \
     mkdir /.local && chmod a+rwx /.local && \
-    apt-get install -y --no-install-recommends wget
+    apt-get install -y --no-install-recommends wget fonts-nanum
 WORKDIR /tf/tensorflow-tutorials
 RUN wget https://raw.githubusercontent.com/tensorflow/docs/master/site/en/tutorials/keras/classification.ipynb \ 
 https://raw.githubusercontent.com/tensorflow/docs/master/site/en/tutorials/keras/overfit_and_underfit.ipynb \
