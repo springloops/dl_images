@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# build
+docker build -t springloops/tensorflow:1.14.0-gpu-py3 .
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# build
+docker build -t springloops/mxnet:nightly_gpu_cu101_mkl_py3 .
+
