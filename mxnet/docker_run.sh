@@ -1,6 +1,7 @@
 #!/bin/bash
 
 container_name=mxnet-gpu-py3-jupyter
+volume=$1
 
 docker container stop $container_name
 
@@ -9,7 +10,7 @@ docker run --runtime=nvidia \
            --name $container_name \
            --rm \
            -d \
-             -v $(realpath ${location}):/mxnet \
+           --mount type=bind,src=$(realpath ${volume}),dst=/mxnet/notebook \
            -p 8888:8888 \
            springloops/mxnet:nightly_gpu_cu101_mkl_py3
 

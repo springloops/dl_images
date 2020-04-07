@@ -1,20 +1,19 @@
 FROM mxnet/python:nightly_gpu_cu101_mkl_py3
 
 RUN ln -s /usr/bin/python3 /usr/bin/python && \
-    mkdir -p /mxnet/d2l-en && chmod -R a+rwx /mxnet/ && \
+    chmod -R a+rwx /mxnet/ && \
     mkdir /.local && chmod a+rwx /.local && \
     apt-get install -y --no-install-recommends unzip fonts-nanum
 
-WORKDIR /mxnet/d2l-en
-
-RUN wget https://d2l.ai/d2l-en.zip && unzip d2l-en.zip -d d2l-en
-
 WORKDIR /mxnet
+
+RUN wget https://d2l.ai/d2l-en.zip && unzip d2l-en.zip -d d2l-en && rm d2l-en.zip
+
 COPY README.md README.md
 
 ENV SHELL=/bin/bash
 
-RUN pip install jupyterlab matplotlib numpy scipy pandas sympy nose colored scikit-learn
+RUN pip install jupyterlab matplotlib scipy pandas sympy nose colored scikit-learn
 
 # for jupyterlab
 EXPOSE 8888

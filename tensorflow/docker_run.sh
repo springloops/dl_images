@@ -9,7 +9,7 @@ docker run --runtime=nvidia \
            --name $container_name \
            --rm \
            -d \
-             -v $(realpath ${location}):/tf/notebooks \
+             -v $(realpath $1):/tf/notebooks \
            -p 8888:8888 \
 	   -p 6006:6006 \
            springloops/tensorflow:1.14.0-gpu-py3
