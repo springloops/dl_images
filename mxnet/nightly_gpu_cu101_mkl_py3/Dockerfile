@@ -7,7 +7,8 @@ RUN ln -s /usr/bin/python3 /usr/bin/python && \
 
 WORKDIR /mxnet
 
-RUN wget https://d2l.ai/d2l-en.zip && unzip d2l-en.zip -d d2l-en && rm d2l-en.zip
+RUN wget https://d2l.ai/d2l-en.zip && unzip d2l-en.zip -d d2l-en && rm d2l-en.zip && \
+    wget https://ko.d2l.ai/d2l-ko.zip && unzip d2l-ko.zip -d d2l-ko && rm d2l-ko.zip
 
 COPY README.md README.md
 
