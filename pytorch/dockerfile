@@ -4,7 +4,10 @@ ARG DEFAULT_USER=springloops
 
 ENV NEW_USER=$DEFAULT_USER
 
-RUN useradd -m $NEW_USER
+RUN useradd -m $NEW_USER && \
+apt-get update && \
+apt-get install sudo && \
+echo "$NEW_USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers
 
 USER $NEW_USER
 
