@@ -1,0 +1,11 @@
+FROM pytorch/pytorch:latest
+
+ARG DEFAULT_USER=springloops
+
+ENV NEW_USER=$DEFAULT_USER
+
+RUN useradd -m $NEW_USER
+
+USER $NEW_USER
+
+WORKDIR /workspace

@@ -19,4 +19,7 @@ RUN pip install jupyterlab matplotlib scipy pandas sympy nose colored scikit-lea
 # for jupyterlab
 EXPOSE 8888
 
+
+ENV PYTHONPATH=$PYTHONPATH:/mxnet/d2l-en/d2l
+
 CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter lab --notebook-dir=/mxnet --ip 0.0.0.0 --no-browser --allow-root"]
