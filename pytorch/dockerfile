@@ -2,13 +2,23 @@ FROM pytorch/pytorch:latest
 
 ARG DEFAULT_USER=springloops
 
+
 ENV NEW_USER=$DEFAULT_USER
+ENV SHELL=/bin/bash
 
 RUN useradd -m $NEW_USER && \
 apt-get update && \
 apt-get install sudo && \
-echo "$NEW_USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers
+echo "$NEW_USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers && \
+pip install jupyterlab matplotlib numpy scipy pandas sympy nose colored scikit-learn
 
 USER $NEW_USER
 
 WORKDIR /workspace
+
+# for jupyter lab
+EXPOSE 8888
+# for tensorboard
+EXPOSE 6006
+
+CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter lab --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root"]
